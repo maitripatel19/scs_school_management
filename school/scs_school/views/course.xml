@@ -1,0 +1,75 @@
+<odoo>
+		<!--  Tree View -->
+		<record id="view_course_course_tree" model="ir.ui.view">
+			<field name="name">view.course.course.tree</field>
+			<field name="model">course.course</field>
+			<field name="arch" type="xml">
+				<tree string="Course">
+					<field name="name"/>
+					<field name="state"/>
+					<field name="code"/>
+					<field name="sem_ids"/>
+					<field name="course_description"/>
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form view -->
+		<record id="view_course_course_form" model="ir.ui.view">
+			<field name="name">view.course.course.form</field>
+			<field name="model">course.course</field>
+			<field name="arch" type="xml">
+				<form string="Course">
+					<group>
+						<field name="name" required="1"/>
+						<field name="code"/>
+						<field name="active"/>
+						<!-- <field name="sem_ids" >
+							<tree string="semester">
+								<field name="name"/>
+								<field name="code"/>
+								<field name="sem_fees"/>
+							</tree>
+							<form string="semester">
+								<field name="name"/>
+								<field name="code"/>
+								<field name="sem_fees"/>
+							</form>
+						</field> -->
+						<!-- <field name="course_description"/> -->
+					</group>
+					<notebook>
+						
+						<page string="Semesters" name="sem_ids">
+							<field name="sem_ids" >
+								<tree string="semester">
+									<field name="name"/>
+									<field name="code"/>
+									<field name="sem_fees"/>
+								</tree>
+								<form string="semester">
+									<group>
+										<field name="name"/>
+										<field name="code"/>
+										<field name="sem_fees"/>
+										<field name="course_id" invisible="1"/>
+									</group>
+								</form>
+							</field>
+						</page>
+						<page string="Description" name="course_description">
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<!--  Action View of School  -->
+		<record id="action_course_course_view" model="ir.actions.act_window">
+			<field name="name">Course</field>
+			<field name="res_model">course.course</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<!-- menu -->
+		<menuitem id="menu_sub_course_course" name="Course" action="action_course_course_view" parent="scs_school.menu_school_main" sequence="1"/>
+
+</odoo>

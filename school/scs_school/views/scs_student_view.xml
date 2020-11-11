@@ -1,0 +1,145 @@
+<odoo>
+		<!--  Tree View of School  -->
+		<record id="view_student_student_tree" model="ir.ui.view">
+			<field name="name">view.student.student.tree</field>
+			<field name="model">student.student</field>
+			<field name="arch" type="xml">
+				<tree string="Student">
+					<field name="name"/>
+					<field name="id_card"/>
+					<field name="roll_number"/>
+					<field name="birth_date"/>
+					<field name="school_id"/>
+					<field name="state"/>
+					<field name="email"/>
+					<field name="sem_ids"/>
+					<field name="total_fees"/>
+					<field name="total_paid_fees"/>
+					<field name="gender"/>
+					<!-- <field name="school_code"/> -->
+				</tree>
+			</field>
+		</record>
+		<!--  Form View of School  -->
+		<record id="view_student_student_form" model="ir.ui.view">
+			<field name="name">view.student.student.form</field>
+			<field name="model">student.student</field>
+			<field name="arch" type="xml">
+				<form string="Student">
+				<header>
+					<button string="new" name="action_new" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'new')]}"/>
+					<button string="confirmed" name="action_confirm" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'confirmed')]}"/>
+					<button string="cancel" name="action_cancel" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'cancel')]}"/>
+
+					
+					<field name="state" widget="statusbar"/>
+				</header>
+					<div align="right">
+					<field name="image" widget="image" style="height:100px;width:100px;"/>
+				</div>
+					<group colspan="4" col="4">
+					<field name="name" required="1"  placeholder="Enter Student Name...." class="student_color"/>
+					<field name="roll_number" required="1"/>
+					<field name="birth_date"/>
+					<field name="age" widget="progressbar"/>
+					<field name="school_id"/>
+					<field name="school_code"/>
+					<field name="id_card"/>
+					<field name="email" widget="email" required="1"/>
+					<field name="course_id"/>
+					<field name="total_fees"/>
+					<field name="total_paid_fees"/>
+					<field name="gender"/>
+					<!-- <field name="sem_ids"/> -->
+					<!-- <field name="school_code"/> -->
+					</group>
+					<notebook>
+						<page string="Semesters">
+							<field name="sem_ids"/>
+						</page>
+						<page string="Hobby">
+							<field name="hobby_ids"/>
+						</page>
+						<page string="WizID">
+							<field name="wiz_ids"/>
+						</page>
+						
+					</notebook>	
+				</form>
+			</field>
+		</record>
+		<!-- search view -->
+		<record id="view_student_student_search" model="ir.ui.view">
+        <field name="name">view.student.student.search</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <search string="Student">
+            	<group  string="Group By">
+                    <filter name="group_student_gender" string="Gender" context="{'group_by':'gender'}"/>
+                </group>
+                <filter name="gender_male_filter" string="Male"
+                      domain="[('gender', '=', 'male')]"/>
+                <filter name="gender_female_filter" string="Female"
+                       domain="[('gender', '=', 'female')]"/>
+            </search>
+        </field>
+    	</record>
+		<!-- kanban view of student -->
+		<record id="view_student_student_kanban" model="ir.ui.view">
+			<field name="name">student.student.kanban</field>
+			<field name="model">student.student</field>
+			<field name="arch" type="xml">
+			<kanban string="Students">
+				<field name="name"/>
+				<field name="email"/>
+				<field name="birth_date"/>
+				<field name="age"/>
+				<field name="school_id"/>
+				<field name="image"/>
+				<templates>
+					<t t-name="kanban-box">
+						<div class="o_kanban_image d-md-none">
+                              	<img class="o_kanban_image_inner_pic"
+                                            t-if="record.image" t-att-alt="record.value"
+                                            t-att-src="kanban_image('student.student', 'image', record.raw_value)"/>
+                        </div>
+						<div t-attf-class="oe_kanban_card oe_kanban_global_click">
+							<b>Name: </b>
+							<span>
+								<t t-esc="record.name.value"/>
+							</span>
+							<br/>
+							<b>email: </b>
+							<span>
+								<t t-esc="record.email.value"/>
+							</span>
+							<br/>
+							<b>Birth Date: </b>
+							<span>
+								<t t-esc="record.birth_date.value"/>
+							</span>
+							<br/>
+							<b>Age: </b>
+							<span>
+								<t t-esc="record.age.value"/>
+							</span>
+							<br/>
+							<b>School: </b>
+							<span>
+								<t t-esc="record.school_id.value"/>
+							</span>
+						</div>
+					</t>
+				</templates>
+			</kanban>
+			</field>
+		</record>
+		<!--  Action View of School  -->
+		<record id="action_student_student_view" model="ir.actions.act_window">
+			<field name="name">Student</field>
+			<field name="res_model">student.student</field>
+			<field name="view_mode">tree,form,search,kanban</field>
+		</record>
+		<!--  School Management Menu Main  -->
+		<menuitem id="menu_sub_student_student" name="Student" action="action_student_student_view" parent="scs_school.menu_sub_school" sequence="3"/>
+</odoo>

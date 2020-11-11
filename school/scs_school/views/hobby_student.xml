@@ -1,0 +1,32 @@
+<odoo>
+	<!-- tree  view of hobby student  -->
+	<record id="view_hobby_student_tree" model="ir.ui.view">
+			<field name="name">view.hobby.student.tree</field>
+			<field name="model">hobby.student</field>
+			<field name="arch" type="xml">
+				<tree string="hobby">
+					<field name="name"/>
+				</tree>
+			</field>
+	</record>
+	<!-- form view of hobby -->
+	<record id="view_hobby_student_form" model="ir.ui.view">
+			<field name="name">view.hobby.student.form</field>
+			<field name="model">hobby.student</field>
+			<field name="arch" type="xml">
+				<form string="hobby">
+					<group>
+						<field name="name" placeholder="enter hobby name"/>
+					</group>
+				</form>
+			</field>
+	</record>
+	<!--  Action View of School  -->
+	<record id="action_hobby_student_view" model="ir.actions.act_window">
+			<field name="name">hobby</field>
+			<field name="res_model">hobby.student</field>
+			<field name="view_mode">tree,form</field>
+	</record>
+	<!--  hobby menu -->
+	<menuitem id="menu_sub_hobby_student" name="Hobby" action="action_hobby_student_view" parent="scs_school.menu_school_main" sequence="1"/>
+</odoo>

@@ -1,0 +1,6 @@
+<odoo>
+	<data>
+		<!--  School Information Report  -->
+		<report id="action_report_student" string="Student Information" model="student.student" report_type="qweb-pdf" file="scs_school.report_student" name="scs_school.report_student" print_report_name="'Student - %s' % (object.name)"/>
+	</data>
+</odoo>

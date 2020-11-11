@@ -1,0 +1,12 @@
+<odoo>
+		<data noupdate="1">
+		<!--  Hobby Demo data  -->
+		<record id="hobby_01" model="hobby.student">
+			<field name="name">Singing song</field>
+		</record>
+		<!--  Hobby Demo data  -->
+		<record id="hobby_02" model="hobby.student">
+			<field name="name">Driving</field>
+		</record>
+		</data>
+</odoo>

@@ -1,0 +1,41 @@
+<odoo>
+		<!--  Tree View of School  -->
+		<record id="view_student_semester_tree" model="ir.ui.view">
+			<field name="name">view.student.semester.tree</field>
+			<field name="model">student.semester</field>
+			<field name="arch" type="xml">
+				<tree string="Student1">
+					<field name="sem_id"/>
+					<field name="sem_fees"/>
+					<field name="amount_paid"/>
+					<field name="remaining_amt"/>
+				</tree>
+			</field>
+		</record>
+		<!--  Form View of School  -->
+		<record id="view_student_semester_form" model="ir.ui.view">
+			<field name="name">view.student.semester.form</field>
+			<field name="model">student.semester</field>
+			<field name="arch" type="xml">
+				<form string="Student1">
+					<group>
+							<field name="sem_id"/>
+							<field name="sem_fees"/>
+							<field name="amount_paid" required="1"/>
+							<field name="remaining_amt"/>
+							<field name="student_id" invisible="1"/>
+
+					</group>
+					
+				</form>
+			</field>
+		</record>
+		<!--  Action View of School  -->
+		<record id="action_student_semester_view" model="ir.actions.act_window">
+			<field name="name">Student</field>
+			<field name="res_model">student.semester</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<!--  School Management Menu Main  -->
+		<menuitem id="menu_sub_student_semester" name="Student1" action="action_student_semester_view" parent="scs_school.menu_sub_school" sequence="4"/>
+</odoo>

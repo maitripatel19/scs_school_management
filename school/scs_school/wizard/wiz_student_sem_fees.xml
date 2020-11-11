@@ -1,0 +1,31 @@
+<odoo>
+	<!--  Form Of Wiz School Update Rating  -->
+	<record id="view_wiz_student_sem_fees_form" model="ir.ui.view">
+	<field name="name">wiz.student.sem.fees.form.view</field>
+	<field name="model">wiz.student.sem.fees</field>
+	<field name="arch" type="xml">
+		<form string="Students">
+			<sheet>
+				<group>
+					<field name="student_id" />
+					<field name="semester_id" domain="[('student_id', '=', student_id)]" attrs="{'invisible': [('student_id', '=', False)]}"/>
+					<footer>
+						<button string="Students" name="student_sem_fees"
+                          type="object" class="oe_highlight"/>
+                    </footer>
+                    <field name="amount"/>
+				</group>
+			</sheet>
+		</form>
+	</field>
+	</record>
+	<!--  Action Of Wiz School Update Rating  -->
+	<record id="action_view_wiz_student_sem_fees" model="ir.actions.act_window">
+	<field name="name">wiz.student.sem.fees.form.view</field>
+	<field name="res_model">wiz.student.sem.fees</field>
+	<field name="view_mode">form</field>
+	<field name="target">new</field>
+	<!-- <field name="target">new</field> -->
+	</record>
+	<act_window id="wiz_student_sem_fees" name="Students" binding_model="student.student" res_model="wiz.student.sem.fees" view_mode="form" binding_views="form" target="new" />
+</odoo>

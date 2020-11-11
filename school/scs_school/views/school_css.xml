@@ -1,0 +1,12 @@
+<odoo>
+	<template id="assets_backend_inherit" name="school_school_assets" inherit_id="web.assets_backend">
+	<xpath expr="." position="inside">
+		<link rel="stylesheet" href="/scs_school/static/src/css/school.css"/>
+	</xpath>
+	</template>
+	<template id="assets_backend_inherit" name="student_student_assets" inherit_id="web.assets_backend">
+	<xpath expr="." position="inside">
+		<link rel="stylesheet" href="/scs_school/static/src/css/school.css"/>
+	</xpath>
+	</template>
+</odoo>

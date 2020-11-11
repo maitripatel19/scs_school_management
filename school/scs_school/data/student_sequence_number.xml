@@ -1,0 +1,9 @@
+<odoo>
+	<record id="student_number_sequence" model="ir.sequence">
+		<field name="name">Student Unique Sequence</field>
+		<field name="code">student.student</field>
+		<field name="prefix">ST/%(year)s/</field>
+		<field name="padding">5</field>
+		<!-- <field name="company_id" eval="1"/> -->
+	</record>
+</odoo>

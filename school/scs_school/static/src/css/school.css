@@ -1,0 +1,17 @@
+.school_color {
+    color : green !important;
+    text-decoration: underline;
+}
+
+.school_bg_color {
+   background: #a93535;
+}
+
+
+.student_color {
+    color : green !important;
+}
+
+.student_bg_color {
+   background: #a93535;
+}
